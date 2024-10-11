@@ -13,7 +13,7 @@ def home():
                 <title>{title}</title>
                 <style>
                     body {{
-                        background-color: {os.environ["APP_COLOR"]};
+                        background-color: #{os.environ["APP_COLOR"]};
                         font-family: Arial, sans-serif;
                         text-align: center;
                         padding: 50px;
