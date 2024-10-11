@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-latest
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web-app
+      version: latest
+  template:
+    metadata:
+      labels:
+        app: web-app
+        version: latest
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: web-app
+        version: canary
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:canary
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: web-app
