@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ def home():
                 <title>{title}</title>
                 <style>
                     body {{
-                        background-color: #2c6fc3;
+                        background-color: {os.environ["APP_COLOR"]};
                         font-family: Arial, sans-serif;
                         text-align: center;
                         padding: 50px;
