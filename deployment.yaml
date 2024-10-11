@@ -16,29 +16,7 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:latest
-        ports:
-        - containerPort: 5000
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: web-app-canary
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: web-app
-      version: canary
-  template:
-    metadata:
-      labels:
-        app: web-app
-        version: canary
-    spec:
-      containers:
-      - name: web-app-container
-        image: eywrld839/webapp:canary
+        image: eywrld839/webapp:parameterized
         ports:
         - containerPort: 5000
 ---
