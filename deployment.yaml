@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:latest
+        image: eywrld839/webapp:parameterized
         ports:
         - containerPort: 5000
 ---
