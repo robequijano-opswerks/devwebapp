@@ -17,8 +17,18 @@ spec:
       containers:
       - name: web-app-container
         image: eywrld839/webapp:arg
+        env:
+          - name: COLOR
+            value: "$(env.color)"
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
