@@ -48,7 +48,7 @@ def home():
                     <h2>{title}</h2>
                     <p>Welcome to the official main server of Team R.H.A.L.</p>
 
-                    <img src="https://i.ibb.co/4Ty2rhs/asd.png" alt="Team R.H.A.L Logo">
+                    <img src="https://i.ibb.co/xjNxH3J/Screenshot-2024-10-12-at-9-55-42-PM.png" alt="Team R.H.A.L Logo">
 
                 </div>
             </body>
