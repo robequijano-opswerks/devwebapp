@@ -19,7 +19,7 @@ spec:
         image: eywrld839/webapp:arg
         env:
           - name: COLOR
-            value: "%COLOR%"
+            value: "%\env.COLOR%"
         ports:
         - containerPort: 5000
         resources:
