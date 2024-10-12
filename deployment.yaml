@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:arg
+        image: eywrld839/webapp:latest
         env:
           - name: COLOR
             value: "$COLOR"
