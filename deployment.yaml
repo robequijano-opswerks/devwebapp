@@ -13,9 +13,9 @@ spec:
       labels:
         app: web-app
         version: latest
-        COLOR: $COLOR
+        COLOR: "$COLOR"
       annotations:
-        COLOR: $COLOR
+        COLOR: "$COLOR"
     spec:
       containers:
       - name: web-app-container
