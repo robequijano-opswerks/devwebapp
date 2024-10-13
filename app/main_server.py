@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 def color_name_to_hex(color_name):
     """Convert a color name to a hex color code."""
-    # Attempt to convert the color name to hex code
     hex_color = webcolors.name_to_hex(color_name)
     return hex_color
 
@@ -14,9 +13,8 @@ def color_name_to_hex(color_name):
 def home():
     title = "Welcome to the Main Server"
     
-    # Get the background color name from the environment variable or use a default value
-    color_name = os.getenv('COLOR', 'white')  # Default color name if not set
-    hex_color = color_name_to_hex(color_name)  # Convert color name to hex code
+    color_name = os.getenv('COLOR', 'white')  
+    hex_color = color_name_to_hex(color_name) 
     
     return f'''
         <html>
