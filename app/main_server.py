@@ -1,11 +1,29 @@
 from flask import Flask
+import webcolors
 import os
 
 app = Flask(__name__)
 
 @app.route('/')
+
+def hexto_color_name(hex_color):
+    """Convert a hex color code to a color name or closest match."""
+    try:
+        # Try to get the exact color name
+        color_name = webcolors.hex_to_name(hex_color)
+    except ValueError:
+        # Get the closest matching color name
+        rgb_value = webcolors.hex_to_rgb(hex_color)
+        closest_color = min(webcolors.CSS3_NAMES_TO_HEX, key=lambda color: sum((webcolors.hex_to_rgb(webcolors.CSS3_NAMES_TO_HEX[color])[i] - rgb_value[i]) ** 2 for i in range(3)))
+        color_name = closest_color
+    return color_name
+
 def home():
     title = "Welcome to the Main Server"
+
+    # Get the hex color from the environment variable
+    hex_color = os.environ.get("COLOR", "#7F00FF")  # Default to white if not set
+    color_name = os.environ.get("COLOR_NAME", hex_to_color_name(hex_color))  # Convert hex color to color name
     
     return f'''
         <html>
