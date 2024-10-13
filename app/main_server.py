@@ -61,8 +61,6 @@ def home():
 
                     <p>Current Background Color: {color_name}</p>
 
-                    <img src="https://i.ibb.co/4Ty2rhs/asd.png" alt="Team R.H.A.L Logo">
-
                 </div>
             </body>
         </html>
