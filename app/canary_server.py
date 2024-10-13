@@ -59,6 +59,9 @@ def home():
                     <h2>{title}</h2>
                     <p>Welcome to the official canary server of Team R.H.A.L. Test the latest features here!</p>
                     <p>Current Background Color: {color_name}</p>
+
+                    <img src="https://i.ibb.co/4Ty2rhs/asd.png" alt="Team R.H.A.L Logo">
+                     
                 </div>
             </body>
         </html>
