@@ -6,12 +6,8 @@ app = Flask(__name__)
 
 def color_name_to_hex(color_name):
     """Convert a color name to a hex color code."""
-    try:
-        # Convert the color name to hex code
-        hex_color = webcolors.name_to_hex(color_name)
-    except ValueError:
-        # If the color name is not valid, default to white
-        hex_color = "#ffffff"
+    # Attempt to convert the color name to hex code
+    hex_color = webcolors.name_to_hex(color_name)
     return hex_color
 
 @app.route('/')
