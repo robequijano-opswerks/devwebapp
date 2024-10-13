@@ -30,7 +30,7 @@ def home():
                 <title>{title}</title>
                 <style>
                     body {{
-                        background-color: {os.environ["COLOR"]};
+                        background-color: {hex_color};
                         font-family: Arial, sans-serif;
                         text-align: center;
                         padding: 50px;
