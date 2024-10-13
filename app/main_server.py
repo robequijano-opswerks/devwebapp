@@ -19,7 +19,7 @@ def home():
     title = "Welcome to the Main Server"
     
     # Get the background color name from the environment variable or use a default value
-    color_name = os.getenv('APP_COLOR', 'white')  # Default color name if not set
+    color_name = os.getenv('COLOR', 'white')  # Default color name if not set
     hex_color = color_name_to_hex(color_name)  # Convert color name to hex code
     
     return f'''
