@@ -4,8 +4,6 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-
 def hexto_color_name(hex_color):
     """Convert a hex color code to a color name or closest match."""
     try:
@@ -18,6 +16,7 @@ def hexto_color_name(hex_color):
         color_name = closest_color
     return color_name
 
+@app.route('/')
 def home():
     title = "Welcome to the Main Server"
 
