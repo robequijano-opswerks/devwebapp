@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app-latest
+  name: web-app-canary
   labels:
     COLOR: "$COLOR"
   annotations:
     COLOR: "$COLOR"
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: web-app
-      version: latest
+      version: canary
   template:
     metadata:
       labels:
         app: web-app
-        version: latest
+        version: canary
         COLOR: "$COLOR"
       annotations:
         COLOR: "$COLOR"
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:latest
+        image: eywrld839/webapp:canary
         env:
           - name: COLOR
             value: "$COLOR"
@@ -36,16 +36,3 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: web-app-service
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 5000
-      protocol: TCP
-  selector:
-    app: web-app

@@ -12,7 +12,7 @@ def color_name_to_hex(color_name):
 
 @app.route('/')
 def home():
-    title = "Welcome to the Main Server"
+    title = "Welcome to the Canary Server"
     
     # Get the background color name from the environment variable or use a default value
     color_name = os.getenv('COLOR', 'white')  # Default color name if not set
@@ -24,7 +24,7 @@ def home():
                 <title>{title}</title>
                 <style>
                     body {{
-                        background-color: {hex_color};
+                        background-color: {hex_color};  /* Background for the canary server */
                         font-family: Arial, sans-serif;
                         text-align: center;
                         padding: 50px;
@@ -35,7 +35,7 @@ def home():
                         margin-bottom: 10px;
                     }}
                     h2 {{
-                        color: #006400;
+                        color: #ff0000; /* Red for canary warning */
                         font-size: 2.5em;
                         margin-top: 0;
                     }}
@@ -57,14 +57,15 @@ def home():
                 <div class="container">
                     <h1>TEAM R.H.A.L</h1>
                     <h2>{title}</h2>
-                    <p>Welcome to the official main server of Team R.H.A.L.</p>
-
+                    <p>Welcome to the official canary server of Team R.H.A.L. Test the latest features here!</p>
                     <p>Current Background Color: {color_name}</p>
 
+                    <img src="https://i.ibb.co/4Ty2rhs/asd.png" alt="Team R.H.A.L Logo">
+                     
                 </div>
             </body>
         </html>
     '''
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)  # Different port for the canary server
