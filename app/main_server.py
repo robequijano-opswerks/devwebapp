@@ -1,12 +1,8 @@
 import os
 import webcolors
 from flask import Flask
-from dotenv import load_dotenv
 
 app = Flask(__name__)
-
-# Load environment variables from .env file
-load_dotenv()
 
 def color_name_to_hex(color_name):
     """Convert a color name to a hex color code."""
