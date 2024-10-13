@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-canary
+  labels:
+    COLOR: "$COLOR"
+  annotations:
+    COLOR: "$COLOR"
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web-app
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: web-app
+        version: canary
+        COLOR: "$COLOR"
+      annotations:
+        COLOR: "$COLOR"
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:canary
+        env:
+          - name: COLOR
+            value: "$COLOR"
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
