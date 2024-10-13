@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-app-latest
+  labels:
+    COLOR: "$COLOR"
   annotations:
     COLOR: "$COLOR"
 spec:
@@ -15,6 +17,7 @@ spec:
       labels:
         app: web-app
         version: latest
+        COLOR: "$COLOR"
       annotations:
         COLOR: "$COLOR"
     spec:
