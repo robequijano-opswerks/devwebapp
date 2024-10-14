@@ -58,7 +58,7 @@ def home():
                     <p>Welcome to the official main server of Team R.H.A.L.</p>
                     <p>Hello World!</p>
                     <p>Current Background Color: {color_name}</p>
-                    <p>LIVE LIVE LIVE<p>
+                    <p>This is a test<p>
                    
                    
 
