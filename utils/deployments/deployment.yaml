@@ -9,7 +9,7 @@ metadata:
   name: web-app-prod
   namespace: prod
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: web-app-prod
@@ -63,6 +63,7 @@ spec:
       containers:
       - name: web-app-container
         image: eywrld839/webapp:devaa
+
         env:
           - name: COLOR
             value: "$COLOR"
