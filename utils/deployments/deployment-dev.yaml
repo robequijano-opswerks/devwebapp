@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev-environment
+  name: dev
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app
-  namespace: dev-environment
+  name: web-app-dev
+  namespace: dev
   labels:
     COLOR: "$COLOR"
   annotations:
@@ -16,12 +16,12 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      app: web-app
+      app: web-app-dev
       version: dev
   template:
     metadata:
       labels:
-        app: web-app
+        app: web-app-dev
         version: dev
         COLOR: "$COLOR"
       annotations:
@@ -29,25 +29,18 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:dev
+        image: eywrld839/webapp:devaa
         env:
           - name: COLOR
             value: "$COLOR"
         ports:
         - containerPort: 5000
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: web-app-service
-  namespace: dev-environment
+  namespace: dev
 spec:
   type: LoadBalancer
   ports:
@@ -55,5 +48,5 @@ spec:
       targetPort: 5000
       protocol: TCP
   selector:
-    app: web-app
+    app: web-app-dev
 
