@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev-environment
+  name: dev-environment-aa
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-app
-  namespace: dev-environment
+  namespace: dev-environment-aa
   labels:
     COLOR: "$COLOR"
   annotations:
@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:dev
+        image: eywrld839/webapp:devAA
         env:
           - name: COLOR
             value: "$COLOR"
@@ -47,7 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-app-service
-  namespace: dev-environment
+  namespace: dev-environment-aa
 spec:
   type: LoadBalancer
   ports:
