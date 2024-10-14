@@ -1,18 +1,15 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: prod-env
+  name: prod-environment
   labels:
-    name: prod-env
+    name: prod-environment
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app-latest
-  labels:
-    COLOR: "$COLOR"
-  annotations:
-    COLOR: "$COLOR"
+  name: web-app
+  namespace: prod-environment
 spec:
   replicas: 5
   selector:
@@ -24,9 +21,6 @@ spec:
       labels:
         app: web-app
         version: latest
-        COLOR: "$COLOR"
-      annotations:
-        COLOR: "$COLOR"
     spec:
       containers:
       - name: web-app-container
@@ -44,10 +38,51 @@ spec:
             memory: "128Mi"
             cpu: "500m"
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-canary
+  namespace: prod-environment
+  labels:
+    COLOR: "$COLOR"
+  annotations:
+    COLOR: "$COLOR"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+      version: dev
+  template:
+    metadata:
+      labels:
+        app: web-app
+        version: dev
+        COLOR: "$COLOR"
+      annotations:
+        COLOR: "$COLOR"
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:dev
+        env:
+          - name: COLOR
+            value: "$COLOR"
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: web-app-service
+  namespace: prod-environment
 spec:
   type: LoadBalancer
   ports:
