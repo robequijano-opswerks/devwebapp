@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: prod-environment
+  name: prod-environment-AA
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-app
-  namespace: prod-environment
+  namespace: prod-environment-AA
 spec:
   replicas: 5
   selector:
@@ -40,7 +40,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-app-canary
-  namespace: prod-environment
+  namespace: prod-environment-AA
   labels:
     COLOR: "$COLOR"
   annotations:
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:dev
+        image: eywrld839/webapp:devAA
         env:
           - name: COLOR
             value: "$COLOR"
@@ -80,7 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-app-service
-  namespace: prod-environment
+  namespace: prod-environment-AA
 spec:
   type: LoadBalancer
   ports:
