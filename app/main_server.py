@@ -58,8 +58,9 @@ def home():
                     <p>Welcome to the official main server of Team R.H.A.L.</p>
 
                     <p>Current Background Color: {color_name}</p>
-                    
+
                     <img src="https://i.ibb.co/4Ty2rhs/asd.png" alt="Team R.H.A.L Logo">
+                    <img src="https://i.ibb.co/k6Zn3FF/IMG-4173.jpg">
 
                 </div>
             </body>
