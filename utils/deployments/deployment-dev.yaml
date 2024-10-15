@@ -51,12 +51,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-app-canary
+      app: web-app-prod
       version: canary
   template:
     metadata:
       labels:
-        app: web-app-canary
+        app: web-app-prod
         version: canary
         COLOR: "PLACEHOLDER_COLOR"
       annotations:
