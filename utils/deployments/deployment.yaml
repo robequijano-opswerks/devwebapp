@@ -3,8 +3,12 @@ kind: Deployment
 metadata:
   name: web-app-prod
   namespace: prod
+  labels:
+    COLOR: "PLACEHOLDER_COLOR"
+  annotations:
+    COLOR: "PLACEHOLDER_COLOR"
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: web-app-prod
@@ -14,12 +18,12 @@ spec:
       labels:
         app: web-app-prod
         version: latest
+        COLOR: "PLACEHOLDER_COLOR"
+      annotations:
+        COLOR: "PLACEHOLDER_COLOR"
     spec:
       containers:
       - name: web-app-container
         image: eywrld839/webapp:latest
-        env:
-          - name: COLOR
-            value: "$COLOR"
         ports:
         - containerPort: 5000

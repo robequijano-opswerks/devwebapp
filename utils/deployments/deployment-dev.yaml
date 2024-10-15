@@ -14,9 +14,9 @@ metadata:
   name: web-app-dev
   namespace: dev
   labels:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
   annotations:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
 spec:
   replicas: 5
   selector:
@@ -28,16 +28,13 @@ spec:
       labels:
         app: web-app-dev
         version: dev
-        COLOR: "$COLOR"
+        COLOR: "PLACEHOLDER_COLOR"
       annotations:
-        COLOR: "$COLOR"
+        COLOR: "PLACEHOLDER_COLOR"
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:devaa
-        env:
-          - name: COLOR
-            value: "$COLOR"
+        image: eywrld839/webapp:dev
         ports:
         - containerPort: 5000
 ---
@@ -47,31 +44,27 @@ metadata:
   name: web-app-canary
   namespace: prod
   labels:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
   annotations:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: web-app-prod
-      version: prod-canary
+      version: canary
   template:
     metadata:
       labels:
         app: web-app-prod
-        version: prod-canary
-        COLOR: "$COLOR"
+        version: canary
+        COLOR: "PLACEHOLDER_COLOR"
       annotations:
-        COLOR: "$COLOR"
+        COLOR: "PLACEHOLDER_COLOR"
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:devaa
-
-        env:
-          - name: COLOR
-            value: "$COLOR"
+        image: eywrld839/webapp:dev
         ports:
         - containerPort: 5000
 ---
