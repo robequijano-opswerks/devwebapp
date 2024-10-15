@@ -56,7 +56,7 @@ spec:
   template:
     metadata:
       labels:
-        app: web-app-dev
+        app: web-app-canary
         version: canary
         COLOR: "PLACEHOLDER_COLOR"
       annotations:
