@@ -3,6 +3,11 @@ kind: Namespace
 metadata:
   name: dev
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,6 +41,40 @@ spec:
         ports:
         - containerPort: 5000
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-canary
+  namespace: prod
+  labels:
+    COLOR: "$COLOR"
+  annotations:
+    COLOR: "$COLOR"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app-prod
+      version: prod-canary
+  template:
+    metadata:
+      labels:
+        app: web-app-prod
+        version: prod-canary
+        COLOR: "$COLOR"
+      annotations:
+        COLOR: "$COLOR"
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:devaa
+
+        env:
+          - name: COLOR
+            value: "$COLOR"
+        ports:
+        - containerPort: 5000
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -49,4 +88,17 @@ spec:
       protocol: TCP
   selector:
     app: web-app-dev
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+  namespace: prod
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: web-app-prod
