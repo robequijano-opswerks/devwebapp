@@ -34,7 +34,37 @@ spec:
     spec:
       containers:
       - name: web-app-container
-        image: eywrld839/webapp:devaa
+        image: eywrld839/webapp:dev
+        ports:
+        - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-canary
+  namespace: prod
+  labels:
+    COLOR: "PLACEHOLDER_COLOR"
+  annotations:
+    COLOR: "PLACEHOLDER_COLOR"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app-canary
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: web-app-dev
+        version: canary
+        COLOR: "PLACEHOLDER_COLOR"
+      annotations:
+        COLOR: "PLACEHOLDER_COLOR"
+    spec:
+      containers:
+      - name: web-app-container
+        image: eywrld839/webapp:dev
         ports:
         - containerPort: 5000
 ---
