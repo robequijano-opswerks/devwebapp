@@ -13,7 +13,7 @@ def color_name_to_hex(color_name):
 def home():
     title = "Welcome to the Main Server"
     
-    color_name = os.getenv('COLOR', 'white')  
+    color_name = os.getenv('COLOR', 'whdlkwaknlaite')  
     hex_color = color_name_to_hex(color_name) 
     
     return f'''
