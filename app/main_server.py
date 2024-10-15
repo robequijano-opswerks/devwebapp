@@ -12,8 +12,8 @@ def color_name_to_hex(color_name):
 @app.route('/')
 def home():
     title = "Welcome to the Main Server"
-    
-    color_name = os.getenv('COLOR', 'whdlkwaknlaite')  
+    key = "COLOR"
+    color_name = os.getenv(key, 'whdlkwaknlaite')  
     hex_color = color_name_to_hex(color_name) 
     
     return f'''
