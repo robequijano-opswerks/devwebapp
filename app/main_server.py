@@ -69,5 +69,11 @@ def home():
         </html>
     '''
 
+@app.route('/api/color')
+def get_color():
+    """API endpoint to retrieve the current background color."""
+    color_name = get_background_color()
+    return jsonify({'color': color_name})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
