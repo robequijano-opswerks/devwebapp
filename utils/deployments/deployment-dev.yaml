@@ -14,9 +14,9 @@ metadata:
   name: web-app-dev
   namespace: dev
   labels:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
   annotations:
-    COLOR: "$COLOR"
+    COLOR: "PLACEHOLDER_COLOR"
 spec:
   replicas: 5
   selector:
@@ -28,9 +28,9 @@ spec:
       labels:
         app: web-app-dev
         version: dev
-        COLOR: "$COLOR"
+        COLOR: "PLACEHOLDER_COLOR"
       annotations:
-        COLOR: "$COLOR"
+        COLOR: "PLACEHOLDER_COLOR"
     spec:
       containers:
       - name: web-app-container
